@@ -62,7 +62,7 @@ class HfArgumentParser(ArgumentParser):
                 kwargs["type"] = field.type
                 if field.default is not dataclasses.MISSING:
                     kwargs["default"] = field.default
-            elif field.type is bool or field.type is Optional[bool]:
+            elif field.type is bool or field.type == Optional[bool]:
                 if field.type is bool or (field.default is not None and field.default is not dataclasses.MISSING):
                     kwargs["action"] = "store_false" if field.default is True else "store_true"
                 if field.default is True:
